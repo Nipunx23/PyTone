@@ -21,21 +21,13 @@ file = 'C:/Users/asus/OneDrive/Desktop/VS/PYTHON/MINOR/SPEECH_EMOTION_RECOG_usin
 data = read_data(file)
 print("Number of instances: {}".format(len(data)))
 
-#to create tokens and generating the features of an input sentence
 
-
-#An n-gram is a contiguous sequence of n items from a given sample of text or speech. 
-#The function creates n-grams of the specified length and returns them as a list.
 def ngram(token, n): 
     output = []
     for i in range(n-1, len(token)): 
         ngram = ' '.join(token[i-n+1:i+1])
         output.append(ngram) 
     return output
-
-#create_feature function is designed to generate text features from input text. 
-#It tokenizes the input text, converts it to lowercase, and then separates alphanumeric characters and punctuation.
-#It generates n-grams from the alphanumeric tokens and single words from the punctuation tokens, counts the occurrences of these features, and returns them as a Counter object.
 
 def create_feature(text, nrange=(1, 1)):
     text_features = [] 
@@ -50,7 +42,6 @@ def create_feature(text, nrange=(1, 1)):
 #print(ngram("hello, I am VAIBHAV",19))
 #print(create_feature("hello, I am VAIBHAV",(1,1)))
 
-##Python function to store the labels, our labels will be based on emotions such as Joy, Fear, Anger, and so on:
 def convert_label(item, name): 
     items = list(map(float, item.split()))
     label = ""
@@ -86,7 +77,7 @@ X_test = vectorizer.transform(X_test)
 
 #choosing 4 models and decide which one is best
 svc = SVC()
-lsvc = LinearSVC(random_state=123, dual='auto', max_iter=10000)
+lsvc = LinearSVC(random_state=123, max_iter=10000)
 rforest = RandomForestClassifier(random_state=123)
 dtree = DecisionTreeClassifier()
 
