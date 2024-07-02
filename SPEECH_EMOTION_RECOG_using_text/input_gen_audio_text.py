@@ -10,7 +10,6 @@ import pyttsx3
 #     engine.runAndWait()
 
 
-# Initialize the recognizer
 r = sr.Recognizer()
 
 bb = True
